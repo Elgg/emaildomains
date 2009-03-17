@@ -10,7 +10,7 @@
 	 */
 
 	$english = array(
-		'emaildomains:menu:edit' => 'Edit email domains',
+		'emaildomains:menu:edit' => 'Restrict users by email',
 		'emaildomains:description' => 'Enter a comma separated list of email domains you will accept new user registration from.',
 	
 		'emaildomains:save:failed' => 'Could not save your email domains',
