@@ -13,6 +13,9 @@
 	
 	$emaildomains = $CONFIG->site->emaildomains;
 	
+	echo "<div class=\"contentWrapper\">";
+	echo autop(elgg_echo('emaildomains:description'));
+	
 	$box = elgg_view('input/text', array('value' => $emaildomains, 'internalname' => 'emaildomains'));
 	$button = elgg_view('input/submit', array('value' => elgg_echo('save')));
 	
@@ -21,4 +24,6 @@
 			$box $button
 END;
 	echo elgg_view('input/form', array('body' => $form_body, 'action' => $CONFIG->url . "action/emaildomains/edit"));
+	echo "</div>";
+	
 ?>

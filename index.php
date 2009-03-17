@@ -16,14 +16,7 @@
 	// Set admin user for user block
 		set_page_owner($_SESSION['guid']);
 
-	$title = elgg_view_title(elgg_echo('emaildomains:menu:edit'));
-	
-	$body .= "<div class=\"contentWrapper\">";
-	$body .= elgg_echo('emaildomains:description');
-	
-	$body .= elgg_view('emaildomains/forms/edit');
-	$body .= "</div>";
-	
-	
+	$title = elgg_view_title(elgg_echo('emaildomains:menu:edit'));	
+	$body = elgg_view('emaildomains/forms/edit');
 	page_draw(elgg_echo('emaildomains:menu:edit'),elgg_view_layout("two_column_left_sidebar", '', $title . $body));
 ?>
