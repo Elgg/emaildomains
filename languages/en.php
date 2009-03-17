@@ -11,7 +11,7 @@
 
 	$english = array(
 		'emaildomains:menu:edit' => 'Restrict users by email',
-		'emaildomains:description' => 'Enter a comma separated list of email domains you will accept new user registration from.',
+		'emaildomains:description' => 'If you like, you can only let people with certain email addresses register for your site. For example, you could restrict the site to users with email addresses from yourcompany.com. To do this, enter the email domain (the part after the \'@\') below. To use more than one, separate them with commas.',
 	
 		'emaildomains:save:failed' => 'Could not save your email domains',
 		'emaildomains:save:success' => 'Email domains saved',
