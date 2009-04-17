@@ -14,9 +14,11 @@
 	
 	global $CONFIG;
 	$emaildomains = sanitise_string(get_input('emaildomains'));
+	$emaildomains_blocked = sanitise_string(get_input('emaildomains_blocked'));
 	
 	$site = $CONFIG->site;
 	$site->emaildomains = $emaildomains;	
+	$site->emaildomains_blocked = $emaildomains_blocked;
 	
 	system_message(elgg_echo('emaildomains:save:success'));
 	

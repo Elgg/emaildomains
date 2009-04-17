@@ -54,17 +54,42 @@
 		$site = $CONFIG->site;
 		$email = $params['email'];
 		
-		if (($site) && ($site->emaildomains))
+		if (($site) && (($site->emaildomains) || ($site->emaildomains_blocked)))
 		{
-			$domains = explode(',', $site->emaildomains);
-			
-			foreach ($domains as $domain)
-			{
-				$domain = trim($domain);
+			// Check whether an address is banned
+			if ($site->emaildomains_blocked) {
 				
-				if (stripos($email, $domain)!== false)
-					return true;
+				$domains_blocked = explode(',', $site->emaildomains_blocked);
+				
+				foreach ($domains_blocked as $domain)
+				{
+					$domain = trim($domain);
+					
+					if (stripos($email, $domain)!== false)
+						return false;
+				}
 			}
+			
+			// Check whether an address is permitted
+			if ($site->emaildomains) {
+				
+				$domains = explode(',', $site->emaildomains);
+				
+				foreach ($domains as $domain)
+				{
+					$domain = trim($domain);
+					
+					if (stripos($email, $domain)!== false)
+						return true;
+				}
+			}
+			
+			// We got here so we need to check the logic
+				// If no emaildomains have been provided, then we actually want to return true - since we want to allow for
+				// allow from all except denied domains
+			if (strcmp(trim($site->emaildomains),"")==0)
+				return true;
+			
 			
 			return false;
 		}
