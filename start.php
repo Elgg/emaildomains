@@ -24,18 +24,10 @@ function emaildomains_init(){
 	
 	// Register a hook to validate email for new users
 	register_plugin_hook('registeruser:validate:email', 'all', 'emaildomains_validate_email', 999);
+	
+	elgg_add_admin_submenu_item('emaildomains', elgg_echo('emaildomains:menu:edit'), 'users');
 }
 
-/**
- * Adding the diagnostics to the admin menu
- *
- */
-function emaildomains_pagesetup(){
-	if (get_context() == 'admin' && isadminloggedin()) {
-		global $CONFIG;
-		add_submenu_item(elgg_echo('emaildomains:menu:edit'), $CONFIG->wwwroot . 'pg/emaildomains/');
-	}
-}
 
 /**
  * Validate email address against email domains.
